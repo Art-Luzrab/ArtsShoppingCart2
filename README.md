@@ -1,2 +1,3 @@
 # ArtsShoppingCart2
-ArtsShoppingCart2
+
+Art's Shopping Cart 2!
