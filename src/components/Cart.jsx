@@ -1,6 +1,7 @@
 import { useCart } from "../Contexts/CartContext";
 
 export default function Cart() {
+  const { cart } = useCart();
   return (
     <>
       <div className="cart-container">
@@ -8,11 +9,13 @@ export default function Cart() {
           <p>Item</p> <p>Price</p>
         </div>
         <ul className="ul-cart-items">
-          <li className="word-separator cart-item">
-            <p>amount here</p>
-            <p>Emoji</p>
-            <button>❌</button>
-          </li>
+          {cart.map((grocery) => (
+            <li className="word-separator cart-item" key={grocery.id}>
+              <p>{`${grocery.emoji}`}</p>
+              <p></p>
+              <button>❌</button>
+            </li>
+          ))}
         </ul>
 
         <div className="total">
