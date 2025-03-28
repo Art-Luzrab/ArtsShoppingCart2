@@ -9,7 +9,21 @@ function CartProvider({ children }) {
   function reducer(state, action) {
     switch (action.type) {
       case "addToCart":
-        return [...state, action.payload];
+        const existingGrocery = state.find(
+          (grocery) => grocery.id === action.payload.id
+        );
+
+        if (existingGrocery) {
+          return state.map((grocery) =>
+            grocery.id === action.payload.id
+              ? {
+                  ...grocery,
+                  amountOrdered:
+                    grocery.amountOrdered + action.payload.amountOrdered,
+                }
+              : grocery
+          );
+        } else return [...state, action.payload];
 
       default:
         return state;

@@ -21,6 +21,7 @@ export default function Grocery({
     category,
     inStock,
     photo,
+    amountOrdered: quantity,
     inventory,
     emoji,
   };

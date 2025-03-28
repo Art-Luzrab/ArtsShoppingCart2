@@ -2,6 +2,13 @@ import { useCart } from "../Contexts/CartContext";
 
 export default function Cart() {
   const { cart } = useCart();
+  const subTotal = cart.reduce((acc, curr) => {
+    return Number(acc + curr.price * curr.amountOrdered);
+  }, 0);
+
+  const taxTotal = subTotal * 0.1;
+  const total = subTotal + taxTotal;
+
   return (
     <>
       <div className="cart-container">
@@ -11,7 +18,8 @@ export default function Cart() {
         <ul className="ul-cart-items">
           {cart.map((grocery) => (
             <li className="word-separator cart-item" key={grocery.id}>
-              <p>{`${grocery.emoji}`}</p>
+              <p>{`${grocery.emoji} (x${grocery.amountOrdered})`}</p>
+              <p>{`$${(grocery.price * grocery.amountOrdered).toFixed(2)}`}</p>
               <p></p>
               <button>❌</button>
             </li>
@@ -20,13 +28,13 @@ export default function Cart() {
 
         <div className="total">
           <div className="word-separator">
-            <p>Subtotal:</p> <p>x</p>
+            <p>Subtotal:</p> <p>{`$${subTotal.toFixed(2)}`}</p>
           </div>
           <div className="word-separator">
-            <p>Tax:</p> <p>x</p>
+            <p>Tax:</p> <p>{`$${taxTotal.toFixed(2)}`}</p>
           </div>
           <div className="word-separator">
-            <p>Total:</p> <p>x</p>
+            <p>Total:</p> <p>{`$${total.toFixed(2)}`}</p>
           </div>
         </div>
       </div>
