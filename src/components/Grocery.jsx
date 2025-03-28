@@ -44,7 +44,11 @@ export default function Grocery({
         disabled={inStock ? false : true}
       />
       <button
-        onClick={() => dispatch({ type: "addToCart", payload: grocery })}
+        onClick={() =>
+          quantity === 0
+            ? null
+            : dispatch({ type: "addToCart", payload: grocery })
+        }
         disabled={inStock ? false : true}
       >
         Add To Cart
