@@ -1,5 +1,11 @@
+import Cart from "./components/Cart";
+
 function App() {
-  return <div>Art's Shopping Cart 2</div>;
+  return (
+    <div className="App">
+      <Cart />
+    </div>
+  );
 }
 
 export default App;
