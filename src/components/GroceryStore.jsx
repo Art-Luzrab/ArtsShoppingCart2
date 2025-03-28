@@ -1,4 +1,6 @@
+import React from "react";
 import { useState } from "react";
+
 import Grocery from "./Grocery";
 import { market } from "../data/market";
 
