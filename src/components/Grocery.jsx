@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useCart } from "../Contexts/CartContext";
 
 export default function Grocery({
   id,
@@ -10,6 +11,7 @@ export default function Grocery({
   inventory,
   emoji,
 }) {
+  const { dispatch } = useCart();
   const [quantity, setQuantity] = useState(0);
 
   const grocery = {
@@ -40,7 +42,12 @@ export default function Grocery({
         }
         disabled={inStock ? false : true}
       />
-      <button disabled={inStock ? false : true}>Add To Cart</button>
+      <button
+        onClick={() => dispatch({ type: "addToCart", payload: grocery })}
+        disabled={inStock ? false : true}
+      >
+        Add To Cart
+      </button>
     </div>
   );
 }

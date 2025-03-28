@@ -1,3 +1,5 @@
+import { useCart } from "../Contexts/CartContext";
+
 export default function Cart() {
   return (
     <>

@@ -1,8 +1,8 @@
-import apple from "../../public/images/Apple.webp";
-import bread from "../../public/images/bread.jpg";
-import eggs from "../../public/images/eggs.webp";
-import milk from "../../public/images/milk.webp";
-import tomato from "../../public/images/tomato.jpeg";
+import apple from "../images/Apple.webp";
+import bread from "../images/bread.jpg";
+import eggs from "../images/eggs.webp";
+import milk from "../images/milk.webp";
+import tomato from "../images/tomato.jpeg";
 
 export const market = [
   {
