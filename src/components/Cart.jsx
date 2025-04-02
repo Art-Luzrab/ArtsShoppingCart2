@@ -1,7 +1,7 @@
 import { useCart } from "../Contexts/CartContext";
 
 export default function Cart() {
-  const { cart } = useCart();
+  const { cart, dispatch } = useCart();
   const subTotal = cart.reduce((acc, curr) => {
     return Number(acc + curr.price * curr.amountOrdered);
   }, 0);
@@ -21,7 +21,16 @@ export default function Cart() {
               <p>{`${grocery.emoji} (x${grocery.amountOrdered})`}</p>
               <p>{`$${(grocery.price * grocery.amountOrdered).toFixed(2)}`}</p>
               <p></p>
-              <button>❌</button>
+              <button
+                onClick={() =>
+                  dispatch({
+                    type: "deleteFromCart",
+                    payload: { id: grocery.id },
+                  })
+                }
+              >
+                ❌
+              </button>
             </li>
           ))}
         </ul>
