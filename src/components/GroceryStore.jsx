@@ -19,7 +19,7 @@ export default function GroceryStore() {
       emoji={grocery.emoji}
     />
   ));
-  console.log(groceries);
+
   return (
     <>
       <div className="market-container">

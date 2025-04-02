@@ -1,8 +1,11 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
+import { useGrocery } from "./GroceryContext";
 
 const CartContext = createContext();
 
 function CartProvider({ children }) {
+  const { newGroceries, setNewGroceries } = useGrocery();
+
   const initialState = [];
 
   function reducer(state, action) {
@@ -11,9 +14,6 @@ function CartProvider({ children }) {
         const existingGrocery = state.find(
           (grocery) => grocery.id === action.payload.id
         );
-        console.log(state);
-        console.log("payload", action.payload.amountOrdered);
-        console.log("existingGrocery", existingGrocery);
 
         if (existingGrocery) {
           return state.map((grocery) =>
@@ -25,7 +25,9 @@ function CartProvider({ children }) {
                 }
               : grocery
           );
-        } else return [...state, action.payload];
+        } else {
+          return [...state, action.payload];
+        }
 
       case "deleteFromCart":
         return state.filter((grocery) => grocery.id !== action.payload.id);
@@ -36,6 +38,18 @@ function CartProvider({ children }) {
   }
 
   const [cart, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    cart.forEach((item) => {
+      setNewGroceries((previousGroceries) =>
+        previousGroceries.map((grocery) =>
+          grocery.id === item.id
+            ? { ...grocery, inventory: grocery.inventory - item.amountOrdered }
+            : grocery
+        )
+      );
+    });
+  }, [cart, setNewGroceries]);
 
   return (
     <CartContext.Provider value={{ cart, dispatch }}>

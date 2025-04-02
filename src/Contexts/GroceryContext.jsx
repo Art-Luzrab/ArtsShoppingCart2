@@ -18,7 +18,7 @@ function GroceryProvider({ children }) {
 
   return (
     <>
-      <GroceryContext.Provider value={{ newGroceries }}>
+      <GroceryContext.Provider value={{ newGroceries, setNewGroceries }}>
         {children}
       </GroceryContext.Provider>
     </>
