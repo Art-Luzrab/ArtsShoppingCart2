@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { useGrocery } from "./GroceryContext";
 
+// need to do a useReducer for the grocerystore :'(
+
 const CartContext = createContext();
 
 function CartProvider({ children }) {
