@@ -5,11 +5,14 @@ import "./main.css";
 
 import App from "./App.jsx";
 import { CartProvider } from "./Contexts/CartContext.jsx";
+import { GroceryProvider } from "./Contexts/GroceryContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <CartProvider>
-      <App />
-    </CartProvider>
+    <GroceryProvider>
+      <CartProvider>
+        <App />
+      </CartProvider>
+    </GroceryProvider>
   </StrictMode>
 );

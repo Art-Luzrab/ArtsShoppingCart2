@@ -1,6 +1,25 @@
 import React from "react";
+import { useGrocery } from "../Contexts/GroceryContext";
+import Grocery from "./Grocery";
 
 export default function GroceryStore() {
+  const { newGroceries } = useGrocery();
+
+  const groceries = newGroceries.map((grocery) => (
+    <Grocery
+      id={grocery.id}
+      name={grocery.name}
+      price={grocery.price}
+      category={grocery.category}
+      inStock={grocery.inStock}
+      photo={grocery.photo}
+      key={grocery.id}
+      amountOrdered={grocery.amountOrdered}
+      inventory={grocery.inventory}
+      emoji={grocery.emoji}
+    />
+  ));
+  console.log(groceries);
   return (
     <>
       <div className="market-container">

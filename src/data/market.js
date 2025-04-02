@@ -4,7 +4,7 @@ import eggs from "../images/eggs.webp";
 import milk from "../images/milk.webp";
 import tomato from "../images/tomato.jpeg";
 
-export const market = [
+const market = [
   {
     id: 1,
     name: "Tomato",
@@ -61,3 +61,5 @@ export const market = [
     inventory: 0,
   },
 ];
+
+export default market;
